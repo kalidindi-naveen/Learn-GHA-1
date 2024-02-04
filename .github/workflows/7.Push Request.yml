@@ -5,6 +5,9 @@ on:
       - opened
       - closed
       - reopened
+    branches:
+      - main
+      - feature/**
   push:
     branches:
       - main
