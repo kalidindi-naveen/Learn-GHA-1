@@ -61,3 +61,10 @@ jobs:
         run: |
           echo "-_-"
           echo "^_^"
+  Report:
+    if: failure()
+    needs: [Vite-Test, Vite-Build]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test Report
+        run: echo "Run only if stage fails -_-"
