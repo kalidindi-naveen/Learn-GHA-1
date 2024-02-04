@@ -1,5 +1,7 @@
 git pull origin main --allow-unrelated-histories
 
-npm install
+Nodejs pre-installed in ubuntu-latest
+
+npm install or npm ci (ci will install stable dependencies)
 npm run dev
 npm test
