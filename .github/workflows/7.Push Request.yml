@@ -1,0 +1,22 @@
+name: Pull Events
+on:
+  pull_request:
+    types:
+      - opened
+      - closed
+      - reopened
+  push:
+    branches:
+      - main
+      - feature/**
+    paths-ignore:
+      - 'github/workflows/*'
+    paths:
+      - '**.js'
+  workflow_dispatch:
+jobs:
+  github-context:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print github event context value with toJSON Expression
+        run: echo "${{ toJSON(github.event)}}"
