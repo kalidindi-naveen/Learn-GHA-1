@@ -48,4 +48,4 @@ jobs:
       - name: Output File Names
         run: ls
       - name: Output FileName
-        run: ${{ needs.Vite-Build.outputs.script-file-name }}
+        run: echo "${{ needs.Vite-Build.outputs.script-file-name }}"
