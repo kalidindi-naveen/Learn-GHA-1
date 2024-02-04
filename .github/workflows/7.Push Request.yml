@@ -11,8 +11,10 @@ on:
       - feature/**
     paths-ignore:
       - '.github/workflows/*'
-    paths:
-      - '**.js'
+    
+    # you may only define one of `paths` and `paths-ignore` for a single event
+    # paths:
+    #   - '**.js'
   workflow_dispatch:
 jobs:
   github-context:
