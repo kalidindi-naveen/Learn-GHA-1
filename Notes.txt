@@ -5,3 +5,11 @@ Nodejs pre-installed in ubuntu-latest
 npm install or npm ci (ci will install stable dependencies)
 npm run dev
 npm test
+
+git commit -m "Added Comment [skip ci]"  // will not execute workflow
+
+[skip ci]
+[ci skip]
+[no ci]
+[skip actions]
+[actions skip]
