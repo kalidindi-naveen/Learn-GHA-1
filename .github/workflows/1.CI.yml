@@ -1,0 +1,20 @@
+name: CI
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+jobs:
+  Say-Hi:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run a one-line script
+        run: echo Hello, world From NK! 
+
+      - name: Run a multi-line script
+        run: |
+          echo NK -_-
+          echo NK ^_^
