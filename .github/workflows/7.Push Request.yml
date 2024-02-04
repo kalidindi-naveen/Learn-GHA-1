@@ -10,7 +10,7 @@ on:
       - main
       - feature/**
     paths-ignore:
-      - 'github/workflows/*'
+      - '.github/workflows/*'
     paths:
       - '**.js'
   workflow_dispatch:
