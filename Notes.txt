@@ -15,3 +15,7 @@ git commit -m "Added Comment [skip ci]"  // will not execute workflow
 [actions skip]
 
 Use Dependency Caching for Faster Execution of Workflow
+
+npm outdated
+npm update
+Note:- Now it will change package-lock.json so Cache not found, it will install dependencies & create Cache
