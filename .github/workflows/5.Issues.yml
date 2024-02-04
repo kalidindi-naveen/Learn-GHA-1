@@ -1,0 +1,8 @@
+name: Issues Workflow
+on: issues
+jobs:
+  github-context:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print github event context value with toJSON Expression
+        run: echo "${{ toJSON(github.event)}}"
