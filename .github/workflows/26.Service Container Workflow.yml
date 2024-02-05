@@ -1,0 +1,85 @@
+name: Run Vite Application on Service Container
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  Vite-Test:
+    runs-on: ubuntu-latest
+    container:
+      image: node:16
+    services:
+      node:
+        image: node:16
+        env:
+          NAME_HI: Hi
+    steps:
+      - name: Get-Code
+        uses: actions/checkout@v3
+      - name: Cache Dependency
+        uses: actions/cache@v4
+        id: cache
+        with:
+          path: node_modules
+          key: node-cache-${{ hashFiles('**/package-lock.json') }}
+      - name: Install Dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci
+      - name: Run Test
+        continue-on-error: true
+        run: npm test
+      - name: upload test report even test failures
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-report
+          path: test.json
+  Vite-Build:
+    needs: Vite-Test
+    runs-on: ubuntu-latest
+    container:
+      image: node:16
+    steps:
+      - name: Get-Code
+        uses: actions/checkout@v3
+      - name: Cache Dependency
+        uses: actions/cache@v4
+        id: cache
+        with:
+          path: node_modules
+          key: node-cache-${{ hashFiles('**/package-lock.json') }}
+      - name: Install Dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci
+      - name: Build Code
+        run: npm run build
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: vite-basic
+          path: dist
+
+  Vite-Deploy:
+    needs: Vite-Build
+    uses: ./.github/workflows/23.Reusable-Template-3.yml
+    with: 
+      artifact-name: vite-basic
+    # secrets:
+    #   some-secret: ${{ secrets.NAME_HI}}
+  
+  print-output:
+    needs: Vite-Deploy
+    runs-on: ubuntu-latest
+    container:
+      image: node:16
+    steps:
+      - name: print deploy output
+        run: echo "${{ needs.Vite-Deploy.outputs.result }}"
+
+  Report:
+    if: failure()
+    needs: [Vite-Test, Vite-Build]
+    runs-on: ubuntu-latest
+    container:
+      image: node:16
+    steps:
+      - name: Test Report
+        run: echo "Run only if stage fails -_-"
