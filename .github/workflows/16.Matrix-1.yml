@@ -4,7 +4,7 @@ jobs:
   build:
     strategy:
       matrix:
-        node-version: [14,18]
+        node-version: [16,18]
         os-version: [ubuntu-latest]
     runs-on: ${{ matrix.os-version }}
     steps:
