@@ -1,0 +1,10 @@
+name: Reusable Template Deploy
+on: workflow_call
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo Deploy
+        run: |
+          echo -_- 
+          echo ^_^
