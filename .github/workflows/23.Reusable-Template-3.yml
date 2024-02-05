@@ -35,4 +35,5 @@ jobs:
       
       - name: set output
         id: set-output
-        run: echo "step-result=success" >> "$GITHUB_OUTPUT"
+        run: echo "step-result=echo 'success'" >> "$GITHUB_OUTPUT"
+        # echo "step-result=echo success" >> "$GITHUB_OUTPUT" it should be like this only
