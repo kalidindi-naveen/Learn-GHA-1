@@ -50,7 +50,7 @@ jobs:
 
   Vite-Deploy:
     needs: Vite-Build
-    uses: ./.github/workflows/19.Reusable-Template-1.yml
+    uses: ./.github/workflows/21.Reusable-Template-2.yml
     with: 
       artifact-name: vite-basic
     # secrets:
