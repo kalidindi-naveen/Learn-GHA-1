@@ -35,4 +35,4 @@ jobs:
       
       - name: set output
         id: set-output
-        run: echo 'step-result=success'>> $GITHUB_OUTPUT
+        run: echo 'step-result=success'>> $GITHUB_OUTPUT ';'
