@@ -51,6 +51,8 @@ jobs:
   Vite-Deploy:
     needs: Vite-Build
     uses: ./.github/workflows/19.Reusable-Template-1.yml
+    with: 
+      artifact-name: vite-basic
 
   Report:
     if: failure()
