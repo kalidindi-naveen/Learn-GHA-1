@@ -1,4 +1,4 @@
-name: Reusable Workflow for Vite Application
+name: Reusable Workflow-2 for Vite Application
 on:
   push:
   workflow_dispatch:
