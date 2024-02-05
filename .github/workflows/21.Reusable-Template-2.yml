@@ -1,0 +1,28 @@
+name: Reusable Template Deploy
+on: 
+  workflow_call:
+    inputs:
+      artifact-name:
+        description: Name of Artifact File
+        required: true # need to false then only it will pick default value
+        default: vite-basic
+        type: string
+    secrets:
+      some-secret:
+        required: false
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Build Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{inputs.artifact-name}}
+
+      - name: Output File Names
+        run: ls
+
+      - name: Echo Deploy
+        run: |
+          echo -_- 
+          echo ^_^
