@@ -4,8 +4,15 @@ jobs:
   build:
     strategy:
       matrix:
-        node-version: [16,18]
+        node-version: [12,16,18]
         os-version: [ubuntu-latest]
+        include:
+          - node-version: 20
+            os-version: ubuntu-latest
+            npm: 6
+        execlude:
+          - node-version: 12
+            os-version: ubuntu-latest
     runs-on: ${{ matrix.os-version }}
     steps:
       - name: Get-Code
